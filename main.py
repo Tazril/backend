@@ -8,7 +8,14 @@ from constants import *
 
 
 
-app = FastAPI(title=TITLE)
+app = FastAPI(
+    title=TITLE,
+    description=DESCRIPTION,
+    version=VERSION,
+    docs_url="/swagger-ui", 
+    redoc_url=None
+)
+
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
@@ -94,7 +101,7 @@ async def get_meme(meme_id: int):
     return result
 
 """
-GET MEME 
+PATCH MEME 
 :param meme_id: id of the meme to be updated
 :param body: carries new caption or url of the meme 
 :returns: meme
