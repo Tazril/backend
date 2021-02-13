@@ -1,5 +1,6 @@
 import databases
 import sqlalchemy
+import psycopg2
 from data.constants import *
 
 class DataServer :
@@ -17,9 +18,10 @@ class DataServer :
             sqlalchemy.Column(CAPTION, sqlalchemy.String(2000)),
             sqlalchemy.Column(URL, sqlalchemy.String(2000))
         )
-        engine = sqlalchemy.create_engine(
-            DB_URL, connect_args={CONNECT_ARGS: False}
-        )
+        engine = psycopg2.connect(DATABASE_URL, sslmode='require')
+        #engine = sqlalchemy.create_engine(
+        #    DB_URL, connect_args={CONNECT_ARGS: False}
+        #)
         metadata.create_all(engine)
         
         self.database = databases.Database(DB_URL)
