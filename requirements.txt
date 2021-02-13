@@ -8,7 +8,7 @@ aiosqlite==0.16.1
 asyncpg==0.21.0
 click==7.1.2
 httptools==0.1.1
-psycopg2==2.8.6
+psycopg2-binary==2.8.6
 validators==0.18.2
 uvloop==0.14.0
 databases==0.4.1
