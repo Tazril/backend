@@ -18,11 +18,11 @@ class DataServer :
             sqlalchemy.Column(URL, sqlalchemy.String(2000))
         )
         engine = sqlalchemy.create_engine(
-            DB_URL, connect_args={CONNECT_ARGS: False}
+            DATABASE_URL, connect_args={"ssl": {"key":"secret"}}
         )
         metadata.create_all(engine)
         
-        self.database = databases.Database(DB_URL)
+        self.database = databases.Database(DATABASE_URL)
 
     """
     returns: Database Instance
